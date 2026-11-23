@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WMRPL — пробный вариант карточек</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF2EA;--surface:#fff;--ink:#10241E;--muted:#4C5F57;--green:#2F6F5E;--sun:#F2B418;--line:#CFD9CC;--dark:#10241E}
+@media(prefers-color-scheme:dark){:root{--bg:#0C1713;--surface:#14241E;--ink:#EAF0E6;--muted:#9DB0A6;--green:#5FB59C;--line:#26392F;--dark:#091410}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Onest,system-ui,sans-serif}
+.wrap{max-width:1120px;margin:auto;padding:0 20px}
+header{background:var(--bg);border-bottom:1px solid var(--line)}
+.nav{height:62px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font:700 16px Unbounded,sans-serif;text-decoration:none;color:var(--ink)}.logo i{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--sun);margin-right:8px}
+.preview{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:5px 11px}
+main{padding:52px 0 72px}h1,h2,h3{font-family:Unbounded,Onest,sans-serif;line-height:1.2;margin:0}
+h1{font-size:clamp(27px,5vw,42px);font-weight:500;letter-spacing:-.03em;max-width:760px}
+.intro{color:var(--muted);max-width:680px;margin:16px 0 32px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.card{min-width:0;overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 5px 0 var(--line),0 10px 22px rgba(16,36,30,.09),inset 0 1px 0 rgba(255,255,255,.8);transition:transform .2s ease,box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 7px 0 var(--line),0 16px 28px rgba(16,36,30,.13)}
+.visual{height:clamp(150px,25vw,245px);position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 50% 88%,rgba(47,111,94,.18),transparent 58%),linear-gradient(145deg,#F8F9F4,#E3EAE0)}
+.visual:after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.45),transparent 42%,rgba(16,36,30,.04));pointer-events:none}
+.visual svg{width:100%;height:100%;max-width:460px;display:block;filter:drop-shadow(0 16px 12px rgba(16,36,30,.18))}
+.card-body{padding:19px 22px 22px}
+.card h2{font-size:clamp(16px,2.5vw,21px);font-weight:500;margin:0 0 8px}
+.card p{font-size:15px;color:var(--muted);margin:0;max-width:54ch}
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--green);margin-bottom:7px}
+.note{margin-top:30px;color:var(--muted);font-size:13px}
+.back{display:inline-flex;margin-top:20px;color:var(--ink);font-weight:700;text-decoration:none;border-bottom:2px solid var(--sun);padding-bottom:3px}
+@media(max-width:520px){main{padding-top:34px}.wrap{padding-left:15px;padding-right:15px}.grid{gap:12px}.card-body{padding:13px 13px 16px}.card p{font-size:13px;line-height:1.45}.card h2{font-size:15px}.visual{height:150px}}
+@media(prefers-reduced-motion:reduce){.card{transition:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><a class="logo" href="https://mrplbot.github.io/WMRRPL/"><i></i>WMRPL</a><span class="preview">Пробный просмотр · не опубликовано в основном сайте</span></div></header>
+<main class="wrap">
+<h1>Оборудование для вашей энергонезависимости</h1>
+<p class="intro">Подбираем и устанавливаем решения для дома и бизнеса. Четыре основных направления — в едином стиле и с объёмными иллюстрациями оборудования.</p>
+<div class="grid">
+<article class="card">
+<div class="visual">
+<svg viewBox="0 0 440 250" role="img" aria-label="Объёмный гибридный инвертор">
+<defs>
+ <linearGradient id="invBody" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#52645D"/><stop offset=".35" stop-color="#263A33"/><stop offset="1" stop-color="#101F1A"/></linearGradient>
+ <linearGradient id="invSide"><stop stop-color="#152720"/><stop offset="1" stop-color="#09140F"/></linearGradient>
+ <linearGradient id="invGlass" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#293E36"/><stop offset="1" stop-color="#101B17"/></linearGradient>
+ <linearGradient id="invMetal"><stop stop-color="#F9D66A"/><stop offset=".5" stop-color="#D99C16"/><stop offset="1" stop-color="#9B6908"/></linearGradient>
+</defs>
+<ellipse cx="224" cy="215" rx="120" ry="17" fill="#20382D" opacity=".16"/>
+<path d="M130 48 283 29 328 52 328 194 174 218 130 194Z" fill="url(#invSide)"/>
+<path d="M130 48 283 29 328 52 174 76Z" fill="#73847A"/>
+<path d="M130 48 174 76 174 218 130 194Z" fill="#1A2C24"/>
+<path d="M174 76 328 52 328 194 174 218Z" fill="url(#invBody)" stroke="#60746A" stroke-width="1.5"/>
+<path d="M190 91 309 73 309 142 190 160Z" fill="url(#invGlass)" stroke="#829187" stroke-opacity=".55"/>
+<path d="M199 101 300 86 300 119 199 135Z" fill="#13221C"/>
+<path d="M203 105 246 99 246 126 203 132Z" fill="#284B3C"/>
+<path d="M253 98 295 92 295 116 253 122Z" fill="#0B1511"/>
+<path d="M205 145 296 131" stroke="#9FB3A7" stroke-width="2" opacity=".45"/>
+<circle cx="288" cy="153" r="5" fill="#F2B418"/><circle cx="272" cy="155" r="3" fill="#61C49A"/>
+<path d="M194 176 309 158" stroke="#A8B6AC" stroke-width="2" opacity=".35"/>
+<path d="M189 188 309 169" stroke="#0A1510" stroke-width="3" opacity=".5"/>
+<path d="M181 205 317 184" stroke="#819187" stroke-width="1" opacity=".35"/>
+<path d="M146 58 159 66 159 190 146 182Z" fill="#718078" opacity=".4"/>
+<path d="M187 80 314 60" stroke="#D9E1D9" stroke-width="2" opacity=".35"/>
+<path d="M198 219v8m108-25v8" stroke="#263A32" stroke-width="8" stroke-linecap="round"/>
+<path d="M198 219v8m108-25v8" stroke="#8B9A90" stroke-width="2" stroke-linecap="round"/>
+<path d="M330 78h12v96h-12" fill="#24382F" opacity=".65"/>
+</svg>
+</div>
+<div class="card-body"><span class="kicker">Управление энергией</span><h2>Гибридные инверторы</h2><p>Подбор, монтаж и настройка. Объединяем сеть, аккумуляторы и солнечные панели в единую систему.</p></div>
+</article>
+<article class="card">
+<div class="visual">
+<svg viewBox="0 0 440 250" role="img" aria-label="Объёмная аккумуляторная батарея">
+<defs>
+ <linearGradient id="batFront" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F9FBF7"/><stop offset=".45" stop-color="#D9E2D8"/><stop offset="1" stop-color="#A8B9AC"/></linearGradient>
+ <linearGradient id="batSide"><stop stop-color="#8FA497"/><stop offset="1" stop-color="#50685B"/></linearGradient>
+ <linearGradient id="batTop"><stop stop-color="#FFFFFF"/><stop offset="1" stop-color="#B9C9BD"/></linearGradient>
+ <linearGradient id="batGold"><stop stop-color="#FFE28A"/><stop offset=".55" stop-color="#F2B418"/><stop offset="1" stop-color="#B77D08"/></linearGradient>
+</defs>
+<ellipse cx="220" cy="213" rx="112" ry="15" fill="#20382D" opacity=".17"/>
+<path d="M125 65 277 44 322 65 170 89Z" fill="url(#batTop)" stroke="#93A69A"/>
+<path d="M170 89 322 65 322 190 170 215Z" fill="url(#batSide)" stroke="#647B6D"/>
+<path d="M125 65 170 89 170 215 125 188Z" fill="#C3D0C5"/>
+<path d="M125 65 277 44 322 65 170 89Z" fill="#F5F8F2"/>
+<path d="M135 77 160 90 160 196 135 183Z" fill="#E4EBE3"/>
+<path d="M170 89 307 68 307 180 170 202Z" fill="url(#batFront)" stroke="#A1B3A5"/>
+<path d="M188 108 290 92 290 164 188 181Z" fill="#243B31"/>
+<path d="M196 116 282 102 282 155 196 169Z" fill="#14251D"/>
+<path d="M208 125 270 115 270 145 208 155Z" fill="#315644"/>
+<path d="M218 132 260 125" stroke="#9DD2B1" stroke-width="3" stroke-linecap="round"/>
+<circle cx="278" cy="171" r="4" fill="#F2B418"/><circle cx="265" cy="173" r="3" fill="#64C99B"/>
+<path d="M182 193 299 174" stroke="#718A7B" stroke-width="2" opacity=".5"/>
+<path d="M190 91v-9m26 5v-9m25 5v-9" stroke="#758B7D" stroke-width="5" stroke-linecap="round"/>
+<path d="M201 75 225 71" stroke="#F2B418" stroke-width="5" stroke-linecap="round"/>
+<path d="M181 207v8m113-26v8" stroke="#50685B" stroke-width="8" stroke-linecap="round"/>
+<path d="M182 207v8m112-26v8" stroke="#D5DED6" stroke-width="2" stroke-linecap="round"/>
+<path d="M138 72 154 80" stroke="#fff" stroke-width="3" opacity=".8"/>
+</svg>
+</div>
+<div class="card-body"><span class="kicker">Запас энергии</span><h2>Аккумуляторные системы</h2><p>LiFePO₄-батареи и системы хранения энергии. Рассчитываем ёмкость под ваши приборы и время автономной работы.</p></div>
+</article>
+<article class="card">
+<div class="visual">
+<svg viewBox="0 0 440 250" role="img" aria-label="Объёмные солнечные панели">
+<defs>
+ <linearGradient id="panelBlue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#477F91"/><stop offset=".48" stop-color="#17485A"/><stop offset="1" stop-color="#0B2938"/></linearGradient>
+ <linearGradient id="panelEdge"><stop stop-color="#DCE5E0"/><stop offset="1" stop-color="#657A70"/></linearGradient>
+ <linearGradient id="sunshine"><stop stop-color="#FFF0B0"/><stop offset="1" stop-color="#F2B418"/></linearGradient>
+</defs>
+<ellipse cx="220" cy="210" rx="145" ry="16" fill="#20382D" opacity=".16"/>
+<circle cx="326" cy="48" r="19" fill="url(#sunshine)" opacity=".9"/>
+<path d="M94 160 264 125 352 161 181 198Z" fill="#83968B"/>
+<path d="M113 156 282 122 344 149 174 185Z" fill="url(#panelEdge)" stroke="#50685B" stroke-width="2"/>
+<path d="M119 153 281 121 337 146 175 179Z" fill="url(#panelBlue)" stroke="#E4EBE5" stroke-width="2"/>
+<path d="m160 145 55 25m28-62 55 25m-108 20 55-11m-2-35 55-11" stroke="#8EB6C0" stroke-width="1.4" opacity=".75"/>
+<path d="m146 148 13 30m53-40 13 30m53-40 13 30m-131-24 161-32" stroke="#9CC4CB" stroke-width="1.2" opacity=".7"/>
+<path d="M145 178 132 213m179-72 17 40m-91-23-4 42" stroke="#71857A" stroke-width="7" stroke-linecap="round"/>
+<path d="M132 213 320 181" stroke="#52675B" stroke-width="6" stroke-linecap="round"/>
+<path d="M129 206 318 174" stroke="#D7E1D8" stroke-width="2" opacity=".5"/>
+<path d="M115 151 277 119" stroke="#FFFFFF" stroke-width="3" opacity=".55"/>
+<path d="M174 179 337 146" stroke="#FFFFFF" stroke-width="2" opacity=".35"/>
+</svg>
+</div>
+<div class="card-body"><span class="kicker">Собственная генерация</span><h2>Солнечные панели</h2><p>Подбираем и устанавливаем панели на крыше, земле или навесе с учётом нагрузки, угла и затенения.</p></div>
+</article>
+<article class="card">
+<div class="visual">
+<svg viewBox="0 0 440 250" role="img" aria-label="Объёмный стабилизатор напряжения">
+<defs>
+ <linearGradient id="stabFront" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F7F9F5"/><stop offset=".48" stop-color="#D6DED7"/><stop offset="1" stop-color="#A8B5AC"/></linearGradient>
+ <linearGradient id="stabSide"><stop stop-color="#7E9185"/><stop offset="1" stop-color="#344B3E"/></linearGradient>
+ <linearGradient id="stabScreen"><stop stop-color="#233E32"/><stop offset="1" stop-color="#0C1B14"/></linearGradient>
+ <linearGradient id="stabGold"><stop stop-color="#FFE28A"/><stop offset="1" stop-color="#D99C16"/></linearGradient>
+</defs>
+<ellipse cx="222" cy="213" rx="112" ry="15" fill="#20382D" opacity=".17"/>
+<path d="M129 54 273 35 315 56 171 78Z" fill="#F7FAF5" stroke="#AAB9AD"/>
+<path d="M171 78 315 56 315 187 171 210Z" fill="url(#stabSide)" stroke="#536B5C"/>
+<path d="M129 54 171 78 171 210 129 184Z" fill="#B5C4B8"/>
+<path d="M171 78 315 56 315 187 171 210Z" fill="url(#stabFront)" stroke="#A1B1A4"/>
+<path d="M187 98 294 82 294 137 187 154Z" fill="url(#stabScreen)" stroke="#73887A"/>
+<path d="M198 109 282 96 282 128 198 141Z" fill="#10231A"/>
+<text x="205" y="126" font-family="Arial,sans-serif" font-size="17" font-weight="bold" fill="#A9E8B8">220 V</text>
+<path d="M191 166 296 150" stroke="#91A498" stroke-width="2" opacity=".6"/>
+<circle cx="202" cy="181" r="5" fill="#F2B418"/><circle cx="220" cy="178" r="5" fill="#5DAF84"/>
+<path d="M242 176 290 168" stroke="#71877A" stroke-width="3" stroke-linecap="round"/>
+<path d="M188 89 303 71" stroke="#FFFFFF" stroke-width="3" opacity=".6"/>
+<path d="M181 203v8m112-26v8" stroke="#43594C" stroke-width="8" stroke-linecap="round"/>
+<path d="M181 203v8m112-26v8" stroke="#DDE5DD" stroke-width="2" stroke-linecap="round"/>
+<path d="M137 67 154 76 154 188" fill="none" stroke="#FFFFFF" stroke-width="2" opacity=".55"/>
+</svg>
+</div>
+<div class="card-body"><span class="kicker">Защита оборудования</span><h2>Стабилизаторы напряжения</h2><p>Защита техники от скачков и просадок напряжения. Подбор по мощности и характеру нагрузки.</p></div>
+</article>
+</div>
+<p class="note">Это отдельный макет для оценки внешнего вида. Карточки и изображения пока не добавлены на действующий сайт.</p>
+<a class="back" href="https://mrplbot.github.io/WMRRPL/">Вернуться на основной сайт</a>
+</main>
+</body>
+</html>
