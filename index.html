@@ -232,9 +232,17 @@ function calc(){
     if(on){peak+=+b.dataset.w;avg+=b.dataset.w*b.dataset.d}
   });
   $('hrv').textContent=h;$('hr').style.setProperty('--p',((h-1)/23*100)+'%');
-  const inv=peak?Math.max(1,Math.ceil(peak*1.2/1000)):0,v=inv<=2?12:inv<=4?24:48;
+  const peakPower=peak*1.2;
+  const inv=peak?Math.max(1,Math.ceil(peakPower/1000)):0;
+  const energyWh=avg*h*1.2;
+  // Выбираем напряжение и по пиковой мощности, и по требуемой ёмкости.
+  // Ориентир — не более 200 А·ч на выбранном напряжении:
+  // до 2,4 кВт·ч — 12 В, до 4,8 кВт·ч — 24 В, выше — 48 В.
+  let v=12;
+  if(peakPower>2000 || energyWh>2400) v=24;
+  if(peakPower>4000 || energyWh>4800) v=48;
   $('vlt').textContent=v;
-  $('cap').textContent=Math.round(avg*h*1.2/v);
+  $('cap').textContent=Math.round(energyWh/v);
   $('inv').textContent=inv;
   $('pv').textContent=avg?Math.max(1,Math.ceil(avg*2/1000)):0;
   const C=[700,2000,3000,1e9],P=[600,2000,3600,7000];let k=-1;
